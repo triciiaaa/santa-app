@@ -1,12 +1,14 @@
-# sanTA
+# 🎅 sanTA: Streamlining Gift Redemption for Teams
 
-sanTA is an application designed to manage and conduct gift redemption efficiently. The application allows an admin to:
+sanTA is a **lightweight and efficient** application designed to manage and automate gift redemption processes. By integrating staff verification, team-based eligibility checks, and real-time tracking, sanTA ensures a **smooth and transparent** redemption experience for you while minimising administrative overhead.
 
-- Verify staff pass IDs.
-- Check team eligibility for gift redemption.
-- View real-time redemption data.
+## Features
 
-**Tech Stacks Used:**
+- **Verify Staff Pass IDs:** Ensures only registered employees can participate in the redemption process.
+- **Check Team Eligibility:** Confirms that a team has not already redeemed a gift before allowing further redemptions.
+- **View Real-time Redemption Data:** Displays up-to-date information on which teams have redeemed their gifts.
+
+## Tech Stacks Used
 
 - Node.js
 - TypeScript
@@ -18,7 +20,8 @@ sanTA is an application designed to manage and conduct gift redemption efficient
 
 - **Node.js** is required.
 - **npm** or **yarn** must be installed.
-- Ensure all necessary dependencies are installed before running the application.
+- Ensure all necessary dependencies are installed.
+- Set the necessary data configurations in `config.ts`.
 
 ### Steps to Run
 
@@ -93,6 +96,46 @@ santa-app/
    - Entry point for the application.
    - Initialises necessary services and starts the application.
 
+## Data Storage
+
+### Staff Data
+
+The staff data is stored in a CSV file named `staff-id-to-team-mapping-long.csv` that maps staff IDs to their respective teams.
+
+**Example:**
+
+```
+staff_pass_id,team_name,created_at
+BOSS_6FDFMJGFV6YM,GRYFFINDOR,1620761965320
+MANAGER_P49NK2CS3B5G,GRYFFINDOR,1614784710249
+MANAGER_SEK8LLK8R8JL,HUFFLEPUFF,1618869819036
+```
+
+### Redemption Data
+
+The redemption records are stored in a JSON file named `redemptions.json`. Each redemption entry contains the following fields:
+
+- `teamName`: The name of the team that redeemed a gift.
+- `redeemedAt`: The timestamp (in epoch milliseconds) of when the gift was redeemed.
+- `redeemedBy`: The staff ID of the person who redeemed the gift.
+
+**Example:**
+
+```json
+[
+  {
+    "teamName": "GRYFFINDOR",
+    "redeemedAt": 1700000000000,
+    "redeemedBy": "BOSS_6FDFMJGFV6YM"
+  },
+  {
+    "teamName": "HUFFLEPUFF",
+    "redeemedAt": 1700005000000,
+    "redeemedBy": "MANAGER_SEK8LLK8R8JL"
+  }
+]
+```
+
 ## Running Tests
 
 - To run all tests, navigate to the root directory of the application and execute the following command:
@@ -102,5 +145,5 @@ santa-app/
 
 ## Assumptions
 
-- **Staff Eligibility**: Any member of the team can perform the gift redemption
+- **Staff Eligibility**: Only members of the team can perform the gift redemption on behalf of the entire team.
 - **Redemption Eligibility**: Each team is allowed to redeem the gift only once.
