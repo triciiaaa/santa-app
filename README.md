@@ -52,23 +52,28 @@ sanTA is a **lightweight and efficient** application designed to manage and auto
 
 ```
 santa-app/
-│-- data/
+├── data/
 │   ├── redemptions.json
 │   └── staff-id-to-team-mapping-long.csv
-└-- src/
-    │-- models/
-    │   ├── redemption.ts
-    │   └── staff.ts
-    │-- services/
-    │   ├── redemptionService.ts
-    │   └── staffService.ts
-    │-- tests/
-    │   ├── redemptionService.test.ts
-    │   └── staffService.test.ts
-    │-- utils/
-    │   └── csvParser.ts
-    ├── config.ts
-    └── index.ts
+├── src/
+│   ├── models/
+│   │   ├── redemption.ts
+│   │   └── staff.ts
+│   ├── services/
+│   │   ├── redemptionService.ts
+│   │   └── staffService.ts
+│   ├── tests/
+│   │   ├── redemptionService.test.ts
+│   │   └── staffService.test.ts
+│   ├── utils/
+│   │   └── csvParser.ts
+│   ├── config.ts
+│   └── index.ts
+├── jest.config.ts
+├── package-lock.json
+├── package.json
+└── tsconfig.json
+
 ```
 
 <br>
