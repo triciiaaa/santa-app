@@ -8,16 +8,24 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+/**
+ * Displays a visual divider for better readability.
+ */
 function showDivider() {
     console.log("\n------------------------------------------------------------------------------------------------");
 }
 
+/**
+ * Greets the user and introduces the sanTA app.
+ */
 function greetUser() {
     console.log("\nWelcome to sanTA! 🎅🎄🎁")
     showDivider();
 }
 
-
+/**
+ * Displays the main menu and prompts the user for input.
+ */
 function showMenu() {
     console.log("\nSelect an option:");
     console.log("1) Verify Staff Pass ID & Check Gift Redemption Eligibility");
@@ -26,6 +34,11 @@ function showMenu() {
     rl.question("\nEnter your choice: ", handleMenuSelection);
 }
 
+/**
+ * Handles user menu selection and directs to the appropriate function.
+ * 
+ * @param {string} choice - The user's menu selection.
+ */
 async function handleMenuSelection(choice: string) {
     choice = choice.trim();
 
@@ -46,6 +59,10 @@ async function handleMenuSelection(choice: string) {
     }
 }
 
+/**
+ * Prompts the user to enter a Staff Pass ID and checks if the staff can be found in the staff data. 
+ * Retrieves the team that the staff belongs to and checks if the team is eligible for gift redemption.
+ */
 async function verifyStaffPass() {
     rl.question("Enter Staff Pass ID: ", async (staffPassId) => {
         const staff = await lookupStaff(staffPassId);
@@ -70,6 +87,12 @@ async function verifyStaffPass() {
     });
 }
 
+/**
+ * Asks the user to confirm gift redemption and processes their response.
+ * 
+ * @param {string} teamName - The team name of the staff member.
+ * @param {string} staffPassId - The staff pass ID of the person redeeming the gift.
+ */
 function askRedemptionConfirmation(teamName: string, staffPassId: string) {
     rl.question("\nProceed with gift redemption (Y/N): ", (answer) => {
         answer = answer.trim().toUpperCase();
@@ -91,6 +114,9 @@ function askRedemptionConfirmation(teamName: string, staffPassId: string) {
     });
 }
 
+/**
+ * Displays all redeemed gifts in a table format.
+ */
 function viewRedemptions() {
     const redemptions = getAllRedemptions();
 
@@ -120,14 +146,21 @@ function viewRedemptions() {
     showMenu();
 }
 
+/**
+ * Closes the program and exits the application.
+ */
 function exitProgram() {
     console.log("\n👋 Exiting sanTA... Goodbye!");
     rl.close();
 }
 
+/**
+ * Initialises the application by greeting the user and showing the main menu.
+ */
 function main() {
     greetUser();
     showMenu();
 }
 
+// Start the application
 main()
