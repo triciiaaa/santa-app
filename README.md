@@ -4,7 +4,7 @@ sanTA is a **lightweight and efficient** application designed to manage and auto
 
 ## Features
 
-- **Verify Staff Pass IDs:** Ensures only registered employees can participate in the redemption process.
+- **Verify Staff Pass IDs:** Ensures only registered staff can participate in the gift redemption process.
 - **Check Team Eligibility:** Confirms that a team has not already redeemed a gift before allowing further redemptions.
 - **View Real-time Redemption Data:** Displays up-to-date information on which teams have redeemed their gifts.
 
@@ -35,11 +35,17 @@ sanTA is a **lightweight and efficient** application designed to manage and auto
    ```
 3. Install dependencies.
    ```bash
-   npm install # or yarn
+   npm install
+   # or
+   yarn
    ```
-4. Run the application with the following command:
+4. Run the application with any of the following commands:
    ```bash
    npx ts-node src/index.ts
+   # or
+   npm run start
+   # or
+   yarn start
    ```
 
 ## File Structure
