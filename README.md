@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# sanTA
 
-## Getting Started
+sanTA is an application designed to manage and conduct gift redemption efficiently. The application allows an admin to:
 
-First, run the development server:
+- Verify staff pass IDs.
+- Check team eligibility for gift redemption.
+- View real-time redemption data.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Tech Stacks Used:**
+
+- Node.js
+- TypeScript
+- Jest
+
+## Installation and Running the Application
+
+### Prerequisites
+
+- **Node.js** is required.
+- **npm** or **yarn** must be installed.
+- Ensure all necessary dependencies are installed before running the application.
+
+### Steps to Run
+
+1. Clone or download the application files to your local machine.
+   ```bash
+   git clone https://github.com/triciiaaa/santa-app.git
+   ```
+2. Navigate to the directory containing the files.
+   ```bash
+   cd path-to-folder/santa-app
+   ```
+3. Install dependencies.
+   ```bash
+   npm install # or yarn
+   ```
+4. Run the application with the following command:
+   ```bash
+   npx ts-node src/index.ts
+   ```
+
+## File Structure
+
+```
+santa-app/
+│-- data/
+│   ├── redemptions.json
+│   └── staff-id-to-team-mapping-long.csv
+└-- src/
+    │-- models/
+    │   ├── redemption.ts
+    │   └── staff.ts
+    │-- services/
+    │   ├── redemptionService.ts
+    │   └── staffService.ts
+    │-- tests/
+    │   ├── redemptionService.test.ts
+    │   └── staffService.test.ts
+    │-- utils/
+    │   └── csvParser.ts
+    ├── config.ts
+    └── index.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **`redemption.ts`**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   - Defines the structure for gift redemption.
+   - Includes fields like team name, redemption timestamp (in epoch milliseconds), and redeemed by.
 
-## Learn More
+2. **`staff.ts`**
 
-To learn more about Next.js, take a look at the following resources:
+   - Represents staff members eligible for gift redemption.
+   - Includes fields like staff ID, team name and account creation timestamp (in epoch milliseconds).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **`redemptionService.ts`**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   - Handles logic for processing gift redemptions.
+   - Validates eligibility and updates redemption records in `redemption.json`.
 
-## Deploy on Vercel
+4. **`staffService`**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   - Manages staff data through `staff-id-to-team-mapping-long.csv`, including retrieval and verification.
+   - Checks eligibility based on existence of record in staff mapping data.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **`cvParser.ts`**
+
+   - Parses CSV file containing staff data.
+
+6. **`index.ts`**
+
+   - Entry point for the application.
+   - Initialises necessary services and starts the application.
+
+## Running Tests
+
+- To run all tests, navigate to the root directory of the application and execute the following command:
+  ```bash
+  npm test
+  ```
+
+## Assumptions
+
+- **Staff Eligibility**: Any member of the team can perform the gift redemption
+- **Redemption Eligibility**: Each team is allowed to redeem the gift only once.

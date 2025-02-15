@@ -16,7 +16,7 @@ function showDivider() {
 }
 
 /**
- * Greets the user and introduces the sanTA app.
+ * Greets the user and introduces the sanTA application.
  */
 function greetUser() {
     console.log("\nWelcome to sanTA! 🎅🎄🎁")
