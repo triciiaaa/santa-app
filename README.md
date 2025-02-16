@@ -33,18 +33,31 @@ sanTA is a **lightweight and efficient** application designed to manage and auto
    ```bash
    cd path-to-folder/santa-app
    ```
-3. Install dependencies.
+3. Install dependencies with any of the following commands:
+
+   **Using npm:**
+
    ```bash
    npm install
-   # or
+   ```
+
+   **Using yarn:**
+
+   ```bash
    yarn
    ```
+
 4. Run the application with any of the following commands:
+
+   **Using npm:**
+
    ```bash
-   npx ts-node src/index.ts
-   # or
    npm run start
-   # or
+   ```
+
+   **Using yarn:**
+
+   ```bash
    yarn start
    ```
 
@@ -93,7 +106,7 @@ santa-app/
    - Handles logic for processing gift redemptions.
    - Validates eligibility and updates redemption records in `redemption.json`.
 
-4. **`staffService`**
+4. **`staffService.ts`**
 
    - Manages staff data through `staff-id-to-team-mapping-long.csv`, including retrieval and verification.
    - Checks eligibility based on existence of record in staff mapping data.
@@ -104,7 +117,7 @@ santa-app/
 
 6. **`index.ts`**
 
-   - Entry point for the application.
+   - Main entry point of the application.
    - Initialises necessary services and starts the application.
 
 ## Data Storage
